@@ -18,18 +18,13 @@ $(document).ready(function(){
     $("button#get_data").click(function() {
         var items = [];
         var i = 0;
-        var airtable_read_endpoint = "https://api.airtable.com/v0/appKIU0zkdHt3AVTL/Product?api_key=keycj6dRwXwYLEjiv";
+        var airtable_read_endpoint = "https://api.airtable.com/v0/app1O3BYhaZDf2Y4P/type?api_key=keyfIJmVVuHtf9e2u";
         var dataSet = [];
         $.getJSON(airtable_read_endpoint, function(result) {
                $.each(result.records, function(key,value) {
                    items = [];
-                       items.push(value.fields.company);
-                       items.push(value.fields.product_code);
-                       items.push(value.fields.product_no);
-                       items.push(value.fields.geocode2);
-                       items.push(value.fields.json);
-                       items.push(value.fields.gender);
-                       items.push(value.fields.name);
+                       items.push(value.fields.Name);
+                       items.push(value.fields.type);
                        dataSet.push(items);
                        console.log(items);
                 }); // end .each
@@ -39,20 +34,11 @@ $(document).ready(function(){
                  data: dataSet,
                  retrieve: true,
                  columns: [
-                     { title: "Company",
-                       defaultContent:""},
-                     { title: "Product",
-                         defaultContent:"" },
-                     { title: "Number",
-                       defaultContent:"" },
-                     { title: "Geo Code",
-                       defaultContent:""},
-                     { title: "JSON",
-                         defaultContent:""},
-                     { title: "Gender",
-                       defaultContent:""},
                      { title: "Name",
                        defaultContent:""},
+                     { title: "type",
+                         defaultContent:"" },
+                   
                  ]
              } );
         }); // end .getJSON
@@ -61,13 +47,13 @@ $(document).ready(function(){
      $("button#get_data2").click(function() {
       var items = [];
       var i = 0;
-      var airtable_read_endpoint = "https://api.airtable.com/v0/appKIU0zkdHt3AVTL/Roll-up?api_key=keycj6dRwXwYLEjiv";
+      var airtable_read_endpoint = "https://api.airtable.com/v0/appWZgHzvqmo9ze77/roll-up?api_key=keyfIJmVVuHtf9e2u";
       var dataSet = [];
       $.getJSON(airtable_read_endpoint, function(result) {
              $.each(result.records, function(key,value) {
                  items = [];
                      items.push(value.fields.Name);
-                     items.push(value.fields.total_items_by_category);
+                     items.push(value.fields.total);
                      dataSet.push(items);
                      console.log(items);
               }); // end .each
@@ -77,9 +63,9 @@ $(document).ready(function(){
                data: dataSet,
                retrieve: true,
                columns: [
-                   { title: "Product",
+                   { title: "Name",
                      defaultContent:""},
-                   { title: "Total Amount",
+                   { title: "total",
                        defaultContent:"" },
                ]
            } );
@@ -90,11 +76,11 @@ $(document).ready(function(){
                     type : 'bar'
                 },
                 axis: {
-                  x: {label: 'Product'},
-                  y: {label: '# of Items'}
+                  x: {label: 'Name'},
+                  y: {label: 'total'}
                 },
                 bar: {
-                    title: "# of Items by Product Category:",
+                    title: "total by name Category:",
                 }
             });
 
