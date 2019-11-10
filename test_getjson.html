@@ -81,11 +81,11 @@
 
     var map = L.map('map')
           .addLayer(mapboxTiles)
-          .setView([22.287111, 114.191667], 13);
+          .setView([22.340124, 114.205182], 12);
 
 
     var items = [];
-    var airtable_read_endpoint = "https://api.airtable.com/v0/appKIU0zkdHt3AVTL/Venues?api_key=keycj6dRwXwYLEjiv";
+    var airtable_read_endpoint = "https://api.airtable.com/v0/appVkJ49haFre10b9/Table%201?api_key=keyfIJmVVuHtf9e2u";
 
     var data = [];
     $.getJSON(airtable_read_endpoint, function(result) {
